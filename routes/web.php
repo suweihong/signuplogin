@@ -27,7 +27,7 @@ Route::post('double/auth', 'Double\IndexController@doAuth');
 
 
 // 注册过程
-Route::get('signup', 'Signup\IndexController@index')->middleware('cross');
+Route::get('signup', 'Signup\IndexController@index');
 Route::post('signup', 'Signup\IndexController@indexd');
 
 // 验证完成 设置密码
@@ -50,5 +50,3 @@ Route::post('forget/verified', 'Forget\IndexController@doVerified');
 
 // API 相关
 // ............
-
-Route::get('/test/','Double\IndexController@test');

@@ -16,11 +16,6 @@ class IndexController extends Controller
     public function __construct()
     {
     }
-    public function test(Request $request)
-    {
-       $session=$request->session()->all();
-        dump( $session);
-    }
     // init 开启二次验证
     public function init(Request $request){
         $token=$request->route('token');
