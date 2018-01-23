@@ -47,6 +47,8 @@ Route::post('forget', 'Forget\IndexController@doIndex');
 Route::get('forget/verified/{token}', 'Forget\IndexController@verified');
 Route::post('forget/verified', 'Forget\IndexController@doVerified');
 
+//pin
+Route::get('pin','Pin\IndexController@index');
 
 // API 相关
 // ............

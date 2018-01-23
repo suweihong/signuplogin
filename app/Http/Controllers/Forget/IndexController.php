@@ -66,13 +66,13 @@ class IndexController extends Controller
         if($mailToken->save()){
 
             // sendmail
-            Mail::send('emails.forget', [
-                'email'=> $user->email,
-                'token'=> $mailToken->token,
-            ], function ($message) use ($user) {
-                $message->subject(trans('sendmail.forget_subject'));
-                $message->to($user->email);
-            });
+            // Mail::send('emails.forget', [
+            //     'email'=> $user->email,
+            //     'token'=> $mailToken->token,
+            // ], function ($message) use ($user) {
+            //     $message->subject(trans('sendmail.forget_subject'));
+            //     $message->to($user->email);
+            // });
 
         }
 
@@ -88,7 +88,6 @@ class IndexController extends Controller
     // verified 修改密码的页面
     public function verified(Request $request){
         $token=$request->route('token');
-        dump($token);
         return view('forget.verified',compact('token'));
     }
 

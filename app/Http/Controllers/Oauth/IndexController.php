@@ -74,6 +74,12 @@ class IndexController extends Controller
                 ]);
         }
 
+        //获取token
+         $user=User::where('email','=',$email)->first();
+         $uid=$user['id'];
+         $mail=User::find($uid)->hasManymailtoken()->first();
+         $token=$mail['token'];
+
         // 修改api_token
         $user->api_token = str_random(32);
         $user->lang = $lang;
@@ -111,6 +117,7 @@ class IndexController extends Controller
            return response()->json([
                     'errcode' => 1001,
                     'errmsg' => trans('login.login_double_open'),
+                    'token' =>$token, 
                 ]);
         }else{
              return response()->json([

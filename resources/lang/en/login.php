@@ -5,10 +5,10 @@
    'signup_email_unique' => 'Email address has already existed, please log in or retrieve the password',
 
 
-   'password_token_required' => 'Token error or timeout ',
+   'password_token_required' => 'Token error or timeout 333',
    'password_required' => 'The password can not be empty ',
    'password_between' => 'Password length does not conform to security rules, please replace ',
-   'password_token_error' => 'Token error or timeout',
+   'password_token_error' => 'Token error or timeout 22',
 
    'email_not_found' => 'Email addresses do not exist ',
    'user_not_found' => 'user does not exist ',

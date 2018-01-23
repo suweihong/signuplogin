@@ -49,7 +49,7 @@
               <p class="col-lg-offset-1 col-lg-1 col-md-offset-1 col-md-1 col-sm-1 col-xs-1">步骤2.</p>
               <p class="col-lg-10 col-md-10 col-sm-11 col-xs-11">使用谷歌双重验证器扫描下面的二维码。</p>
               <div class="col-lg-offset-2 col-lg-10 col-md-offset-2 col-md-11 col-sm-offset-1 col-sm-11 col-xs-offset-1 col-xs-11">
-                <img src={{$qrCodeUrl}} alt="验证二维码">
+              <img src="{{$qrCodeUrl}}" alt="二维码">
               </div>
             </div>
 
@@ -59,6 +59,7 @@
               <div class="col-lg-offset-2 col-lg-10 col-md-offset-2 col-md-11 col-sm-offset-1 col-sm-11 col-xs-offset-1 col-xs-11">
               <!-- secret 谷歌验证器的密钥 -->
                 <mark id="secret">{{$secret}}</mark>
+                <input type="hidden" name="secret" value="{{$secret}}">
                 <p>如果您的手机丢失时，需要此密码您才能访问您的账户。</p>
               </div>
             </div>
@@ -79,7 +80,9 @@
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                   <input class="verify" type="submit" name="commit" value="开启">
+                  <!-- <input class="verify" type="button" name="commit" value="开启"> -->
                 </div>
+                <input type="hidden" value="{{$token}}" name="token">
               </div>
             </div>
         
@@ -90,10 +93,11 @@
 
       <script src="/js/jquery.js" charset="utf-8"></script>
       <script src="/js/bootstrap.min.js" charset="utf-8"></script>
+      <script src="/js/jquery.qrcode.min.js" charset="utf-8"></script>
       <script src="/js/myServer.js" charset="utf-8"></script>
       <script type="text/javascript">
+        
           window.onload = () => {
-
             $("input[type='submit']").click(()=> {
               var userData = {
                 secret: '{{$secret}}',
@@ -102,7 +106,6 @@
                 _token:'{{csrf_token()}}',
                 targetUrl: $("#targetUrl").val(),
               };
-
               window.ser.post("/double/init", userData).done(data => {
                 if (!data.errcode || data.errcode == "0") {
                 layer.msg(data.errmsg,{icon:6},function(){
@@ -110,7 +113,9 @@
                 });
                   
                 } else {
-                   layer.msg(data.errmsg,{icon: 5});
+                   layer.msg(data.errmsg,{icon:5},function(){
+                     window.location.href = "";
+                   });
                 };
               }).fail(err => console.log(err));
 

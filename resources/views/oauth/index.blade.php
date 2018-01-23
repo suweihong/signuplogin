@@ -64,7 +64,13 @@
                  layer.msg(data.errmsg,{icon:6},function(){
                      window.location.href = "/double/auth/"+data.api_token;
                  });
-                } else {
+                } else if(data.errcode == "1001")
+                {
+                    layer.msg(data.errmsg,{icon: 5},function(){
+                     window.location.href = "/double/init/"+data.token;
+                  });
+                }
+                else {
                   layer.msg(data.errmsg,{icon: 5});
                 };
               }).fail(err => console.log(err));

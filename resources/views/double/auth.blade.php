@@ -20,7 +20,7 @@
           <div type="button" class="close">
             <span aria-hidden="true">&times;</span>
           </div>
-          <p id="my-err-msg" style="width:200px;">错误的地方！！！</p>
+          <p id="my-err-msg" style="width:200px;"></p>
         </div>
 
         <form class="" action="/double/auth" method="post">
@@ -50,11 +50,13 @@
               window.ser.post("/double/auth", userData).done(data => {
                 if (!data.errcode || data.errcode == "0") {
                  layer.msg(data.errmsg,{icon:6},function(){
-                   window.location.href = "/";
+                   window.location.href = "https://baidu.com";
                  });
                  
                 } else {
-                  layer.msg(data.errmsg,{icon: 5});
+                  layer.msg(data.errmsg,{icon: 5},function(){
+                     window.location.href = "";
+                  });
                 };
               }).fail(err => console.log(err));
 

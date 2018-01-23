@@ -74,11 +74,11 @@ class IndexController extends Controller
         $event->save();
 
         // 加入消息
-        // $note = new Note;
-        // $note->user_id = $user->id;
-        // $note->subject = trans('note.welcome_title');
-        // $note->content = trans('note.welcome_content');
-        // $note->save();
+        $note = new Note;
+        $note->user_id = $user->id;
+        $note->subject = trans('note.welcome_title');
+        $note->content = trans('note.welcome_content');
+        $note->save();
          $user=User::where('email','=',$email)->first();
          $uid=$user['id'];
          $mail=User::find($uid)->hasManymailtoken()->where('user_id','=', $uid)->first();

@@ -61,7 +61,7 @@ class IndexController extends Controller
             }
         } else {
            return response()->json([
-                'errcode' => 1001,
+                'errcode' => 1003,
                 'errmsg' => trans('login.double_signup_fail'),
             ]);
         }
@@ -101,7 +101,7 @@ class IndexController extends Controller
 
         }else{
              return response()->json([
-                'errcode' => 1001,
+                'errcode' => 1003,
                 'errmsg' => trans('login.double_login_fail'),
             ]);
         }

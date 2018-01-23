@@ -25,13 +25,13 @@ class UserCreated extends Event
     	if($mailToken->save()){
 
     		// sendmail
-    		Mail::send('emails.signup', [
-	    		'email'=> $user->email,
-	    		'token'=> $mailToken->token,
-	    	], function ($message) use ($user) {
-			    $message->subject(trans('sendmail.signup_subject'));
-			    $message->to($user->email);
-			});
+   //  		Mail::send('emails.signup', [
+	  //   		'email'=> $user->email,
+	  //   		'token'=> $mailToken->token,
+	  //   	], function ($message) use ($user) {
+			//     $message->subject(trans('sendmail.signup_subject'));
+			//     $message->to($user->email);
+			// });
 
     	}
     }

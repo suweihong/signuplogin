@@ -22,12 +22,7 @@
    'forget_password_save'=>'密码修改成功',
    'double_signup_success'=>'注册时双重验证成功',
    'double_signup_fail'=>'注册时双重验证失败',
-   'double_login_sucess'=>'登录时双重验证验证成功',
+   'double_login_sucess'=>'登录时双重验证验证成功，您可进入网站',
    'double_login_fail'=>'登录时双重验证验证失败',  
-<<<<<<< HEAD
-
-=======
->>>>>>> 64c4654ea29046a218110e7ed8f2d211f4f20035
-
  
   ];
