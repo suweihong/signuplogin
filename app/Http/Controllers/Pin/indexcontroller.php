@@ -9,6 +9,6 @@ class indexcontroller extends Controller
 {
     public function index()
     {
-    	return view('pin.index');
+    	return view('pin.setPIN');
     }
 }

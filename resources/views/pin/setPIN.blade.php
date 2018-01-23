@@ -14,7 +14,7 @@
       <div class="return">
         <a><i class="icon-arrow-left"></i></a>
       </div>
-      <nav class="header">PIN码设置</nav>
+      <nav class="header">重设PIN码</nav>
       <section class="content">
 
         <div id="my-error" style="display:none;" class="alert alert-danger alert-dismissible fade in" role="alert">
@@ -26,10 +26,10 @@
 
         <form class="" action="/forget" method="post">
           {{ csrf_field() }}
-          <p>请输入您6位您要设置的PIN码</p>
+          <p>请输入您6位新的PIN码</p>
           <div class="position">
             <label class="icon-lock" for="email"></label>
-            <input id="pin" type="pin" name="text" placeholder="PIN码">
+            <input id="pin" type="pin" name="text" placeholder="新的PIN码">
           </div>
           <input type="submit" name="submit" value="提交">
 
