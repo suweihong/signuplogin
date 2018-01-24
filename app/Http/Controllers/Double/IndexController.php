@@ -48,13 +48,16 @@ class IndexController extends Controller
         $checkResult = $ga->verifyCode($secret, $oneCode, 2);    // 2 = 2*30sec clock tolerance
         if ($checkResult) {
             $user=user::where('id',$user_id)->first();
+            $email=$user['email'];
             $user->secret=$secret;
             $res=$user->save();
             if($res){
-            $mailToken->delete();
+            session(['user'=>$email]);
+            $u=session('user');
+            // $mailToken->delete();
             return response()->json([
                 'errcode' => 0,
-                'errmsg' => trans('login.double_signup_success'),
+                'errmsg' => $u,
             ]);
             }else{
                 return 'false';

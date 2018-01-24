@@ -49,7 +49,9 @@
               <p class="col-lg-offset-1 col-lg-1 col-md-offset-1 col-md-1 col-sm-1 col-xs-1">步骤2.</p>
               <p class="col-lg-10 col-md-10 col-sm-11 col-xs-11">使用谷歌双重验证器扫描下面的二维码。</p>
               <div class="col-lg-offset-2 col-lg-10 col-md-offset-2 col-md-11 col-sm-offset-1 col-sm-11 col-xs-offset-1 col-xs-11">
-              <img src="{{$qrCodeUrl}}" alt="二维码">
+              <!-- <img src="{{$qrCodeUrl}}" alt="二维码"> -->
+              <!-- 此处DIV使用于自己显示二维码，不用引用于谷歌图片。。。 -->
+              <div id="qrcode"></div>
               </div>
             </div>
 
@@ -98,6 +100,15 @@
       <script type="text/javascript">
         
           window.onload = () => {
+            // 自动生成二维码，不需要向谷歌服务器请求二维码图片
+
+            $("#qrcode").qrcode({
+              // render: "table",
+              width: 200,
+              height: 200,
+              text: "otpauth://totp/Blog?secret={{$secret}}"
+            }).children("table").css("border", "5px solid #fff");
+
             $("input[type='submit']").click(()=> {
               var userData = {
                 secret: '{{$secret}}',
@@ -107,16 +118,7 @@
                 targetUrl: $("#targetUrl").val(),
               };
               window.ser.post("/double/init", userData).done(data => {
-                if (!data.errcode || data.errcode == "0") {
-                layer.msg(data.errmsg,{icon:6},function(){
-                  window.location.href = "/";
-                });
-                  
-                } else {
-                   layer.msg(data.errmsg,{icon:5},function(){
-                     window.location.href = "";
-                   });
-                };
+               console.log(data);
               }).fail(err => console.log(err));
 
 
